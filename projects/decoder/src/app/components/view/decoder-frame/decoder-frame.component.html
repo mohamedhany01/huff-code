@@ -1,0 +1,52 @@
+<!-- {{uploadForm.value| json}} -->
+<form class="decoder-form" [formGroup]="uploadForm" (ngSubmit)="decode()">
+  <mat-form-field class="margin-bottom-1">
+    <div>
+      <ngx-mat-file-input
+        placeholder="Select encoded text"
+        formControlName="encodedText"
+        [accept]="'.huff'"
+        [color]="'accent'">
+      </ngx-mat-file-input>
+    </div>
+    <mat-error *ngIf="uploadForm.get('encodedText')?.hasError('required')">
+      Encoded file is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="margin-bottom-1">
+    <div>
+      <ngx-mat-file-input
+        placeholder="Select decoding table"
+        formControlName="decodingTable"
+        [accept]="'.json'"
+        [color]="'accent'">
+      </ngx-mat-file-input>
+    </div>
+    <mat-error *ngIf="uploadForm.get('decodingTable')?.hasError('required')">
+      Decoding Table file is required
+    </mat-error>
+  </mat-form-field>
+  <section
+    ngClass="decoder-form__buttons-wrapper {{
+      (isSmall$ | async) ? 'flex-column' : ''
+    }}">
+    <div ngClass="{{ (isSmall$ | async) ? 'margin-bottom-1' : '' }}">
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        ngClass="{{ (isSmall$ | async) ? 'full-width' : '' }}">
+        Decode Text
+      </button>
+    </div>
+    <div>
+      <button
+        type="reset"
+        mat-raised-button
+        color="warn"
+        ngClass="{{ (isSmall$ | async) ? 'full-width' : '' }}">
+        Reset
+      </button>
+    </div>
+  </section>
+</form>

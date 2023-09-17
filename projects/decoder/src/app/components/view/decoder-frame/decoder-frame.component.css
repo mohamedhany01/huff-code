@@ -1,0 +1,12 @@
+.decoder-form {
+  background-color: var(--x150-clr);
+  padding: 1rem;
+  border: 2px solid var(--x250-clr);
+  display: flex;
+  flex-direction: column;
+}
+
+.decoder-form__buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

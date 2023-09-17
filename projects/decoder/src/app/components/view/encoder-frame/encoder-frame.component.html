@@ -1,0 +1,47 @@
+<form
+  class="encoder-form"
+  #encodingForm="ngForm"
+  (ngSubmit)="generateAssets(encoderArea)">
+  <mat-form-field class="encoder-form__textarea-wrapper">
+    <mat-label for="inputText" class="">Text</mat-label>
+    <div>
+      <textarea
+        #encoderArea="ngModel"
+        #textArea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        id="inputText"
+        name="inputText"
+        [(ngModel)]="inputText"
+        required></textarea>
+    </div>
+    <mat-error *ngIf="encoderArea?.errors">
+      Text is required to encoded
+    </mat-error>
+  </mat-form-field>
+  <section
+    ngClass="encoder-form__buttons-wrapper {{
+      (isSmall$ | async) ? 'flex-column' : ''
+    }}">
+    <div ngClass="{{ (isSmall$ | async) ? 'margin-bottom-1' : '' }}">
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        ngClass="{{ (isSmall$ | async) ? 'full-width' : '' }}">
+        Encode Text
+      </button>
+    </div>
+    <div>
+      <button
+        type="reset"
+        mat-raised-button
+        color="warn"
+        ngClass="{{ (isSmall$ | async) ? 'full-width' : '' }}">
+        Reset
+      </button>
+    </div>
+  </section>
+</form>

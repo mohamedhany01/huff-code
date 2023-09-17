@@ -1,0 +1,16 @@
+.encoder-form {
+  background-color: var(--x150-clr);
+  padding: 1rem;
+  border: 2px solid var(--x250-clr);
+}
+
+.encoder-form__textarea-wrapper {
+  width: 100%;
+  min-height: 200px;
+}
+
+.encoder-form__buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

@@ -1,0 +1,16 @@
+<main [ngSwitch]="frame">
+  <div ngClass="{{ (isSmall$ | async) ? 'panel' : 'panel--large' }}">
+    <huff-switcher
+      [iconName]="icon"
+      (clickEmitter)="switchView()"></huff-switcher>
+    <div *ngSwitchCase="'encoder'">
+      <huff-encoder-frame></huff-encoder-frame>
+    </div>
+    <div *ngSwitchCase="'decoder'">
+      <huff-decoder-frame></huff-decoder-frame>
+    </div>
+    <div *ngSwitchDefault>
+      <p>Error</p>
+    </div>
+  </div>
+</main>
